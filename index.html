@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Жаклин &amp; Стефан — 04.09.2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: {
+              50:  '#FDF8EE',
+              100: '#F5EDD5',
+              200: '#E8D9B0',
+              400: '#C8A96E',
+              600: '#9C7A3C',
+            },
+            sea: {
+              200: '#A8C4D8',
+              400: '#4A7FA5',
+              700: '#1E4060',
+              800: '#1A3550',
+              900: '#0F2236',
+            },
+            stone: {
+              50:  '#F9F6F1',
+              400: '#9E9080',
+            },
+            accent: '#6B9E8C',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── CSS Variables ─────────────────────────────────────── */
+    :root {
+      --color-sand-50:  #FDF8EE;
+      --color-sand-100: #F5EDD5;
+      --color-sand-200: #E8D9B0;
+      --color-sand-400: #C8A96E;
+      --color-sand-600: #9C7A3C;
+      --color-sea-900:  #0F2236;
+      --color-sea-800:  #1A3550;
+      --color-sea-700:  #1E4060;
+      --color-sea-400:  #4A7FA5;
+      --color-sea-200:  #A8C4D8;
+      --color-stone-50: #F9F6F1;
+      --color-stone-400:#9E9080;
+      --color-accent:   #C8A96E;
+      --shadow-elevated: 0 2px 8px rgba(15,34,54,.08), 0 8px 24px rgba(15,34,54,.12);
+      --shadow-floating: 0 4px 12px rgba(15,34,54,.10), 0 20px 48px rgba(15,34,54,.18), 0 1px 2px rgba(200,169,110,.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: var(--color-sand-50);
+      color: var(--color-sea-900);
+      margin: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SVG Grain overlay ─────────────────────────────────── */
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── Typography base ───────────────────────────────────── */
+    .font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: var(--color-sea-900);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+
+    /* ── Hero animated blobs — aurora effect ───────────────── */
+    .hero-rays {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+    }
+    /* Large yellow-gold — top left */
+    .hero-blob-1 {
+      width: 650px; height: 500px;
+      background: radial-gradient(ellipse, rgba(220,180,60,1) 0%, rgba(200,140,30,.6) 40%, transparent 70%);
+      top: -10%; left: -5%;
+      opacity: 0.38;
+      animation: blob-move-1 4s ease-in-out infinite alternate;
+    }
+    /* Deep blue — bottom right */
+    .hero-blob-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(40,100,200,1) 0%, rgba(20,60,160,.7) 40%, transparent 70%);
+      bottom: -15%; right: -8%;
+      opacity: 0.45;
+      animation: blob-move-2 5s ease-in-out infinite alternate;
+    }
+    /* Cyan-teal — center */
+    .hero-blob-3 {
+      width: 450px; height: 350px;
+      background: radial-gradient(ellipse, rgba(60,180,200,1) 0%, rgba(40,140,180,.6) 40%, transparent 70%);
+      top: 35%; left: 40%;
+      opacity: 0.28;
+      animation: blob-move-3 3s ease-in-out infinite alternate;
+    }
+    /* Warm amber — right side */
+    .hero-blob-4 {
+      width: 400px; height: 450px;
+      background: radial-gradient(ellipse, rgba(240,160,40,1) 0%, rgba(200,120,20,.5) 40%, transparent 70%);
+      top: 5%; right: -5%;
+      opacity: 0.3;
+      animation: blob-move-4 4s ease-in-out infinite alternate;
+    }
+    /* Violet hint — bottom left */
+    .hero-blob-5 {
+      width: 380px; height: 380px;
+      background: radial-gradient(ellipse, rgba(80,60,180,1) 0%, rgba(60,40,160,.5) 40%, transparent 70%);
+      bottom: 5%; left: 10%;
+      opacity: 0.25;
+      animation: blob-move-5 6s ease-in-out infinite alternate;
+    }
+    @media (max-width: 640px) {
+      .hero-blob-1 { opacity: 0.15; }
+      .hero-blob-2 { opacity: 0.18; }
+      .hero-blob-3 { opacity: 0.10; }
+      .hero-blob-4 { opacity: 0.12; }
+      .hero-blob-5 { opacity: 0.10; }
+    }
+    @keyframes blob-move-1 {
+      0%   { transform: translate(0,   0)   scale(1);    }
+      40%  { transform: translate(15%, 10%) scale(1.1);  }
+      100% { transform: translate(8%,  22%) scale(0.95); }
+    }
+    @keyframes blob-move-2 {
+      0%   { transform: translate(0,    0)    scale(1);   }
+      50%  { transform: translate(-12%, -14%) scale(1.08);}
+      100% { transform: translate(-20%, -8%)  scale(1.12);}
+    }
+    @keyframes blob-move-3 {
+      0%   { transform: translate(0,    0)   scale(1);   }
+      35%  { transform: translate(-18%, 12%) scale(1.2); }
+      100% { transform: translate(10%, -15%) scale(0.88);}
+    }
+    @keyframes blob-move-4 {
+      0%   { transform: translate(0,    0)   scale(1);   }
+      45%  { transform: translate(-10%, 15%) scale(1.05);}
+      100% { transform: translate(-5%,  28%) scale(0.92);}
+    }
+    @keyframes blob-move-5 {
+      0%   { transform: translate(0,   0)   scale(1);   }
+      50%  { transform: translate(20%, -8%) scale(1.1); }
+      100% { transform: translate(12%, 16%) scale(0.95);}
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(74,127,165,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 85%, rgba(107,158,140,.28) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(30,64,96,.6) 0%, transparent 70%);
+    }
+
+    /* ── Ornament line ─────────────────────────────────────── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--color-sand-400);
+    }
+    .ornament::before,
+    .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-sand-400), transparent);
+      min-width: 60px;
+    }
+    .ornament-sym {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1.3rem;
+      opacity: .75;
+    }
+
+    /* ── Countdown ─────────────────────────────────────────── */
+    .countdown-wrap {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 56px;
+    }
+    .cd-digit {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      color: var(--color-sand-400);
+      line-height: 1;
+      display: block;
+      transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .cd-digit.flip-exit {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .cd-digit.flip-enter {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .cd-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-sea-200);
+      opacity: .7;
+    }
+    #message .cd-label {
+      color: var(--color-stone-400);
+      opacity: .8;
+    }
+
+    /* ── Scroll chevron ───────────────────────────────────── */
+    .scroll-chevron {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: bounce-y 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+    @keyframes bounce-y {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Hero entrance animations ──────────────────────────── */
+    .hero-el {
+      opacity: 1;
+      transform: none;
+    }
+    .hero-el--muted  { opacity: .8; }
+    .hero-el--bright { opacity: .9; }
+    .hero-el--dim    { opacity: .65; }
+    /* JS adds .animate-hero to body — hides then stagger-reveals */
+    .animate-hero .hero-el {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .animate-hero .hero-el.visible {
+      animation: hero-in 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .animate-hero .hero-el--muted.visible {
+      animation: hero-in-muted 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .animate-hero .hero-el--bright.visible {
+      animation: hero-in-bright 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .animate-hero .hero-el--names.visible {
+      animation: hero-in-names 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-in-names {
+      from { opacity: 0; transform: translateY(40px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+    @keyframes hero-in-muted {
+      to { opacity: .8; transform: translateY(0); }
+    }
+    @keyframes hero-in-bright {
+      to { opacity: .9; transform: translateY(0); }
+    }
+    @keyframes hero-in-dim {
+      to { opacity: .65; transform: translateY(0); }
+    }
+
+    /* ── Section headings ─────────────────────────────────── */
+    .section-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-sea-900);
+      line-height: 1.15;
+    }
+
+    /* ── Timeline ──────────────────────────────────────────── */
+    .timeline-wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+    }
+    /* The vertical centre line */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--color-sand-200) 8%, var(--color-sand-200) 92%, transparent);
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+    /* Grid: two columns with a gutter for the centre line */
+    .timeline-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline-line { display: none; }
+    .timeline-dot-col { display: none; }
+    .timeline-item.left  { text-align: left; }
+    .timeline-item.right { flex: 1; text-align: left; }
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      padding-bottom: 24px;
+    }
+    .timeline-row:last-child { padding-bottom: 0; }
+    /* Continuous line through all centered dots */
+    .timeline-grid::before {
+      content: '';
+      position: absolute;
+      left: 5.5px;
+      top: 60px;
+      bottom: 59px;
+      width: 1px;
+      background: var(--color-sand-200);
+      z-index: 0;
+    }
+    .timeline-row-left {
+      flex-shrink: 0;
+      width: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--color-sea-400);
+      box-shadow: 0 0 0 3px var(--color-sand-50), 0 0 0 4.5px var(--color-sea-400);
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-card {
+      background: var(--color-stone-50);
+      border: 1px solid var(--color-sand-200);
+      border-radius: 12px;
+      padding: 20px 24px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: var(--shadow-elevated);
+      transition: box-shadow 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .timeline-card:hover {
+      box-shadow: var(--shadow-floating);
+      transform: translateY(-2px);
+    }
+    .timeline-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-sand-400);
+      line-height: 1;
+    }
+    .timeline-event {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--color-sea-900);
+      margin-top: 4px;
+    }
+    .timeline-note {
+      font-size: 0.9rem;
+      color: var(--color-stone-400);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* Mobile timeline */
+    @media (max-width: 640px) {
+      .timeline-grid {
+        max-width: 100%;
+      }
+    }
+
+    /* ── Info cards ────────────────────────────────────────── */
+    .info-card {
+      background: var(--color-stone-50);
+      border: 1px solid var(--color-sand-200);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--color-sand-400), var(--color-accent));
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-floating);
+    }
+    .info-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(200,169,110,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-sand-400);
+    }
+    .info-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-sea-900);
+      margin-bottom: 12px;
+    }
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--color-stone-400);
+      line-height: 1.75;
+    }
+    .info-card strong {
+      color: var(--color-sea-900);
+      font-weight: 500;
+    }
+
+    /* ── RSVP section ──────────────────────────────────────── */
+    #rsvp {
+      position: relative;
+      background-color: var(--color-sea-900);
+      overflow: hidden;
+    }
+    .rsvp-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 20%, rgba(74,127,165,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(107,158,140,.2) 0%, transparent 55%);
+    }
+
+    .rsvp-card {
+      background: var(--color-sea-800);
+      border: 1px solid rgba(200,169,110,.15);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: var(--shadow-floating);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Form inputs */
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-sea-200);
+      margin-bottom: 8px;
+    }
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(168,196,216,.2);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(168,196,216,.4);
+    }
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: rgba(200,169,110,.5);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 0 0 3px rgba(200,169,110,.12);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Pill toggle */
+    .pill-toggle {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(168,196,216,.2);
+      border-radius: 12px;
+      padding: 4px;
+    }
+    .pill-option {
+      flex: 1;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--color-sea-200);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.16,1,0.3,1);
+      text-align: center;
+      user-select: none;
+    }
+    .pill-option:hover { color: #fff; }
+    .pill-option.active {
+      background: var(--color-accent);
+      color: #fff;
+    }
+    .pill-option:active { transform: scale(0.96); }
+
+    /* Submit button */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 40px;
+      background: var(--color-accent);
+      color: var(--color-sea-900);
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,169,110,.35), 0 1px 3px rgba(200,169,110,.2);
+      transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1), background 0.2s ease;
+      outline: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,169,110,.45), 0 2px 6px rgba(200,169,110,.25);
+      background: #D4B87E;
+    }
+    .btn-primary:focus-visible {
+      box-shadow: 0 0 0 3px rgba(200,169,110,.5), 0 4px 16px rgba(200,169,110,.35);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(200,169,110,.25);
+    }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* RSVP success */
+    #rsvp-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    #rsvp-success.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Scroll reveal ─────────────────────────────────────── */
+    [data-reveal] {
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-ready [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .reveal-ready [data-reveal="left"] {
+      opacity: 0;
+      transform: translateX(-36px);
+    }
+    .reveal-ready [data-reveal="right"] {
+      opacity: 0;
+      transform: translateX(36px);
+    }
+    [data-reveal].revealed {
+      opacity: 1 !important;
+      transform: translate(0) !important;
+    }
+    .reveal-ready [data-delay="1"] { transition-delay: 0.1s; }
+    .reveal-ready [data-delay="2"] { transition-delay: 0.2s; }
+    .reveal-ready [data-delay="3"] { transition-delay: 0.3s; }
+    .reveal-ready [data-delay="4"] { transition-delay: 0.4s; }
+    .reveal-ready [data-delay="5"] { transition-delay: 0.2s; }
+    .reveal-ready [data-delay="6"] { transition-delay: 0.45s; }
+    .reveal-ready [data-delay="7"] { transition-delay: 0.7s; }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--color-sea-900);
+      border-top: 1px solid rgba(200,169,110,.12);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-ornament {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--color-sand-400);
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+      margin-bottom: 16px;
+    }
+
+    /* ── Utilities ──────────────────────────────────────────── */
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(to right, var(--color-sand-400), var(--color-accent));
+      border-radius: 99px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── Preview mode: override all animation states (placed last for specificity) ── */
+    body.preview-mode .hero-el,
+    body.preview-mode .animate-hero .hero-el,
+    body.preview-mode .reveal-ready [data-reveal],
+    body.preview-mode .reveal-ready [data-reveal="left"],
+    body.preview-mode .reveal-ready [data-reveal="right"],
+    body.preview-mode [data-reveal],
+    body.preview-mode [data-reveal="left"],
+    body.preview-mode [data-reveal="right"] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="site-nav" style="
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    transition:background 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+  ">
+    <div style="display:flex;gap:28px;align-items:center;">
+      <a href="#program" class="nav-link">Програма</a>
+      <a href="#info" class="nav-link">Важни детайли</a>
+    </div>
+    <button data-tf-popup="OacTCk7y" data-tf-medium="snippet" class="nav-link-btn">Потвърди</button>
+  </nav>
+
+  <style>
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-link:hover { color: var(--color-sand-400); }
+    .nav-link-active { color: var(--color-sand-400) !important; }
+    .nav-link-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--color-sea-900);
+      background: var(--color-accent);
+      padding: 8px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(200,169,110,.35), 0 1px 3px rgba(200,169,110,.2);
+      transition: background 0.2s, transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s;
+    }
+    .nav-link-btn:hover {
+      background: #D4B87E;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,169,110,.45), 0 2px 6px rgba(200,169,110,.25);
+    }
+    #site-nav.scrolled {
+      background: rgba(15,34,54,0.97);
+      box-shadow: 0 1px 0 rgba(200,169,110,.12), 0 4px 24px rgba(15,34,54,.25);
+    }
+  </style>
+
+  <!-- ╔═══════════════════════════════════╗
+       ║           1. HERO                ║
+       ╚═══════════════════════════════════╝ -->
+  <section id="hero">
+    <div class="hero-gradient"></div>
+    <div class="hero-rays">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-blob hero-blob-3"></div>
+      <div class="hero-blob hero-blob-4"></div>
+      <div class="hero-blob hero-blob-5"></div>
+    </div>
+    <div class="grain-overlay"></div>
+
+    <div class="relative z-10 flex flex-col items-center text-center px-6 py-24" style="gap:0;">
+
+      <!-- Invite line -->
+      <p class="hero-el font-display hero-el--muted" style="
+        font-size:clamp(1.15rem,2.8vw,1.5rem);
+        font-weight:400;
+        font-style:italic;
+        color:var(--color-sea-200);
+        margin-bottom:28px;
+        animation-delay:50ms;">
+        Каним те на сватба
+      </p>
+
+      <!-- Names -->
+      <h1 class="hero-el hero-el--names font-display" style="
+        font-size: clamp(3.5rem, 10vw, 7.5rem);
+        font-weight:300;
+        font-style:italic;
+        color:var(--color-sand-400);
+        letter-spacing:-.02em;
+        line-height:1.05;
+        margin-bottom:0;
+        animation-delay:200ms;">
+        Жаклин<br/><span style="color:#F0DEB8;">&amp;</span>&nbsp;Стефан
+      </h1>
+
+      <!-- Ornament -->
+      <div class="hero-el ornament" style="width:min(340px,80%);margin:28px auto;animation-delay:450ms;">
+        <span class="ornament-sym">⚓</span>
+      </div>
+
+      <!-- Date -->
+      <p class="hero-el font-display hero-el--bright" style="
+        font-size:clamp(1.1rem,3vw,1.5rem);
+        font-weight:300;
+        color:#fff;
+        letter-spacing:.18em;
+        margin-bottom:10px;
+        animation-delay:600ms;">
+        04 · 09 · 2026
+      </p>
+
+      <!-- Location -->
+      <p class="hero-el hero-el--dim" style="
+        font-family:'DM Sans',sans-serif;
+        font-size:.8rem;
+        font-weight:400;
+        letter-spacing:.3em;
+        text-transform:uppercase;
+        color:var(--color-sea-200);
+        margin-top:6px;
+        margin-bottom:48px;
+        animation-delay:700ms;">
+        Созопол
+      </p>
+
+    </div><!-- /content -->
+
+    <!-- Scroll chevron -->
+    <a href="#program" class="scroll-chevron" aria-label="Надолу" style="color:var(--color-sea-200);opacity:.5;">
+      <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
+        <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+
+  <!-- ╔═══════════════════════════════════╗
+       ║        1.5 MESSAGE + COUNTDOWN   ║
+       ╚═══════════════════════════════════╝ -->
+  <section id="message" style="background:var(--color-sand-100);padding:96px 24px;">
+    <div style="max-width:680px;margin:0 auto;text-align:center;">
+
+      <div data-reveal>
+        <!-- Wave divider -->
+        <div style="margin:0 auto 40px;width:min(300px,65%);">
+          <svg width="516" height="81" viewBox="0 0 516 81" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;opacity:0.75;">
+            <path d="M0.959365 70.7122C0.908944 70.594 0.811813 70.4996 0.691563 70.4489C0.571184 70.3983 0.437543 70.3955 0.317813 70.4421C0.198083 70.4886 0.101433 70.581 0.0468974 70.6996C-0.00750846 70.8182 -0.0153368 70.9535 0.0273601 71.0747C0.0273601 71.0747 0.0273601 71.0747 0.0273601 71.0747C2.20836 76.022 6.60253 80.3086 12.4269 80.8911C12.4421 80.8922 12.4574 80.8932 12.4727 80.8943C20.1301 81.2204 27.1852 78.3085 33.667 74.9752C39.592 71.8461 45.0712 68.0176 50.2565 63.8262C65.069 50.95 86.9034 36.3491 103.59 51.5513L104.665 48.9347C100.405 48.5015 95.8753 49.0705 92.1668 51.8738C88.3356 54.7222 87.3735 59.9547 88.0057 64.0854C88.0247 64.2325 88.045 64.3784 88.0666 64.5231C88.6176 69.876 92.6291 75.3908 98.0949 76.8348C103.434 78.4464 108.884 77.7194 113.901 76.3369C130.893 69.8335 142.332 56.3516 154.567 44.4406C183.636 18.8483 228.626 -12.2203 264.852 11.5616C268.149 14.2973 270.834 17.5598 273.095 21.2845L274.667 18.7441C266.028 17.5865 256.51 20.2995 250.26 27.1247C243.808 33.7407 242.303 45.0449 246.834 53.2635C247.296 54.1728 247.764 55.0349 248.272 55.9093C261.974 82.6377 296.495 78.3273 319.083 71.6675C348.792 63.3334 372.702 43.1805 401.917 36.9547C415.374 33.9843 429.384 35.1072 442.28 39.35L442.569 34.3177C435.14 35.2246 424.877 39.9629 424.504 50.0993C424.501 50.1573 424.498 50.2153 424.496 50.2735C424.006 60.7168 434.237 66.4329 441.825 67.8334C449.908 69.4974 458.092 68.6724 465.718 66.4629C471.654 64.7305 477.49 62.8174 483.291 60.8657C488.309 59.247 492.959 57.46 497.587 58.4247C503.687 59.5969 510.988 64.0071 512.501 69.5427C512.551 69.9316 512.747 70.2898 513.054 70.5377C513.36 70.7857 513.751 70.9031 514.14 70.8641C514.53 70.8251 514.89 70.6327 515.141 70.329C515.392 70.0253 515.513 69.6354 515.486 69.2442C515.486 69.2442 515.486 69.2442 515.486 69.2442C513.318 60.5292 505.907 56.5024 498.4 54.3622C492.559 52.8961 486.797 54.9058 481.859 56.2798C475.951 58.0256 470.181 59.713 464.269 61.27C457.294 63.1032 449.877 63.6315 443.071 62.121C436.35 60.7238 430.035 56.3937 430.491 50.5134C430.492 50.4761 430.494 50.439 430.496 50.4021C430.501 44.6312 436.816 40.7416 443.418 39.4152C446.3 38.9098 446.526 35.1668 443.706 34.3829C429.76 30.7671 415.107 30.964 401.287 34.0217C371.27 40.4824 346.514 60.0357 317.904 67.1194C294.771 73.0894 264.932 75.803 253.459 52.8941C253.006 52.1129 252.58 51.3408 252.153 50.5233C243.95 37.3192 258.292 19.8295 274.32 22.0428C275.881 22.1808 276.756 20.8099 275.892 19.5024C273.306 15.6306 270.334 12.2122 266.766 9.25137C249.043 -5.37689 224.312 -0.124886 205.341 7.70281C185.815 16.0078 167.715 27.543 152.419 42.3463C140.408 54.1511 128.398 67.6738 113.085 73.4501C104.107 76.4425 91.7692 74.4116 91.0337 64.0801C91.0151 63.9553 90.9975 63.8291 90.981 63.7015C90.4599 60.022 91.2512 56.3002 94.009 54.22C96.7134 52.1095 100.706 51.4734 104.322 51.8522C105.926 52.0394 106.671 50.2282 105.397 49.2356C97.1725 42.3021 84.7321 40.0151 74.7854 44.3967C64.7663 48.3996 56.7289 55.4122 48.7302 61.9607C43.6822 66.1294 38.3541 69.9319 32.6296 73.0289C26.3944 76.3393 19.5094 79.1554 12.6008 78.8984C12.5871 78.8976 12.5735 78.8967 12.5599 78.8959C7.86198 78.5597 3.2054 75.0909 0.959365 70.7122Z" fill="var(--color-sand-400)" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <!-- Message -->
+        <p data-reveal data-delay="1" style="
+          font-family:'Playfair Display',Georgia,serif;
+          font-size:clamp(1.35rem,3vw,1.85rem);
+          font-weight:400;
+          font-style:italic;
+          color:var(--color-sea-900);
+          line-height:1.8;
+          opacity:.88;
+          margin-bottom:56px;">
+          Скъпи роднини и приятели,
+          <br>
+          Ще се радваме да отпразнуваме заедно началото на нашето завинаги, на брега на Черно море. Очакваме ви за един незабравим ден, изпълнен с море, слънце и любов.
+        </p>
+      </div>
+
+      <!-- Countdown -->
+      <div data-reveal data-delay="2">
+        <div class="countdown-wrap" style="margin:0 auto;">
+          <div class="cd-unit">
+            <span class="cd-digit" id="cd-days">–––</span>
+            <span class="cd-label">дни</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-digit" id="cd-hours">––</span>
+            <span class="cd-label">часа</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-digit" id="cd-mins">––</span>
+            <span class="cd-label">минути</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-digit" id="cd-secs">––</span>
+            <span class="cd-label">секунди</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ╔═══════════════════════════════════╗
+       ║        2. DAY PROGRAM            ║
+       ╚═══════════════════════════════════╝ -->
+  <section id="program" style="background:var(--color-sand-50);padding:96px 24px;">
+    <div style="max-width:900px;margin:0 auto;">
+
+      <div class="text-center mb-16" data-reveal>
+        <p class="section-eyebrow">Къде, кога и какво?</p>
+        <h2 class="section-title">Програма</h2>
+        <div class="section-divider" style="margin-top:20px;"></div>
+      </div>
+
+      <div class="timeline-wrap">
+        <div class="timeline-line"></div>
+        <div class="timeline-grid">
+
+          <!-- 17:30 -->
+          <div class="timeline-row" data-reveal data-delay="1">
+            <div class="timeline-row-left">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item right">
+              <div class="timeline-card">
+                <div class="timeline-time">17:30</div>
+                <div class="timeline-event">Граждански брак</div>
+                <p class="timeline-note">Ритуална зала - Созопол</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 18:00 -->
+          <div class="timeline-row" data-reveal data-delay="2">
+            <div class="timeline-row-left">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item right">
+              <div class="timeline-card">
+                <div class="timeline-time">18:00</div>
+                <div class="timeline-event">Църковен брак</div>
+                <p class="timeline-note">Църква Св.Св. Кирил и Методий</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 19:00 -->
+          <div class="timeline-row" data-reveal data-delay="3">
+            <div class="timeline-row-left">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item right">
+              <div class="timeline-card">
+                <div class="timeline-time">19:00</div>
+                <div class="timeline-event">Вечеря</div>
+                <p class="timeline-note">Elvis Kitchen</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 23:00 -->
+          <div class="timeline-row" data-reveal data-delay="4">
+            <div class="timeline-row-left">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item right">
+              <div class="timeline-card">
+                <div class="timeline-time">23:00</div>
+                <div class="timeline-event">Парти на плажа</div>
+                <p class="timeline-note">Elvis Beach Bar</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /timeline-grid -->
+      </div><!-- /timeline-wrap -->
+    </div>
+  </section>
+
+
+  <!-- ╔═══════════════════════════════════╗
+       ║       3. PRACTICAL INFO          ║
+       ╚═══════════════════════════════════╝ -->
+  <section id="info" style="background:var(--color-sand-100);padding:96px 24px;overflow:hidden;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div class="text-center mb-16" data-reveal>
+        <p class="section-eyebrow">Да не забравим</p>
+        <h2 class="section-title">Важни детайли</h2>
+        <div class="section-divider" style="margin-top:20px;"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
+
+        <!-- Card 1: Gifts -->
+        <div class="info-card" data-reveal data-delay="5">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 12v10H4V12"/>
+              <path d="M22 7H2v5h20V7z"/>
+              <path d="M12 22V7"/>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+          <div class="info-card-title">Подаръци</div>
+          <p>
+            За подаръка не се чудете – в плик го донесете.
+          </p>
+        </div>
+
+        <!-- Card 3: No flowers -->
+        <div class="info-card" data-reveal data-delay="6">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 358 482" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M177.634 0.00858715C190.909 -0.314363 197.809 8.52969 206.886 16.7842L232.019 39.6089C236.281 43.4717 242.069 48.9912 246.421 52.4027C255.066 44.3844 263.789 36.4529 272.591 28.6094C276.479 25.1127 282.739 18.7959 287.021 16.3587C290.749 14.2632 294.954 13.1579 299.231 13.1484C305.971 13.2342 312.401 15.9909 317.109 20.8137C324.519 28.4514 324.021 35.9947 324.019 45.8784L324.009 60.5802C323.994 76.3419 324.164 92.3327 323.991 108.069C323.891 148.571 307.439 187.316 278.366 215.514C258.069 235.421 232.346 248.893 204.424 254.241C200.771 254.918 192.656 256.236 189.149 256.193C188.891 260.963 189.054 266.913 189.051 271.791V300.051L189.079 385.878C190.544 383.106 192.564 380.293 194.391 377.731C206.841 360.283 224.624 344.908 245.839 339.743C265.949 334.846 287.609 337.733 307.354 342.981C319.824 346.338 331.999 350.711 343.754 356.058C350.636 359.148 360.371 362.621 357.271 372.246C355.974 376.268 350.471 382.461 347.769 385.778C329.199 408.558 306.414 429.268 280.234 442.923C257.611 454.723 230.486 455.856 205.729 451.871C201.766 451.228 192.839 449.653 189.066 448.413C189.121 453.216 189.074 458.083 189.069 462.883C189.059 471.476 190.349 478.373 180.231 481.373C179.941 481.383 179.651 481.396 179.361 481.406C176.374 481.426 173.504 480.248 171.394 478.133C167.682 474.371 168.644 466.461 168.644 461.393L168.649 443.061L168.664 373.433C164.27 374.281 159.955 375.413 155.45 376.228C139.568 379.108 122.91 379.831 106.935 377.258C98.5278 375.953 90.3203 373.588 82.5083 370.218C51.6336 356.681 22.9773 328.168 2.78731 301.668C-0.978436 296.726 -1.47544 288.546 4.73356 285.446C35.1601 270.253 72.9526 257.833 107.264 263.643C134.803 268.308 153.798 288.546 168.751 310.476C168.315 292.746 169.246 273.806 168.583 256.338C161.935 255.541 155.882 254.846 149.309 253.471C126.078 248.551 104.408 238.008 86.1976 222.77C56.5891 198.186 37.9251 162.873 34.2903 124.561C33.5768 116.731 33.7146 108.348 33.7168 100.45L33.7091 69.3404L33.6958 47.9622C33.6938 38.2834 32.8053 29.8347 39.5061 21.9179C43.8478 16.8599 50.0231 13.7367 56.6703 13.2369C69.6903 12.1742 76.5411 21.1612 85.3523 28.9214C94.0998 36.6252 102.561 44.8822 111.443 52.4077L149.565 17.8009C153.387 14.3582 157.208 10.8132 161.03 7.37006C166.172 2.73619 170.658 0.526912 177.634 0.00858715ZM177.591 20.7132C175.219 21.8479 168.302 28.5327 165.867 30.7434L132.439 61.0644C129.592 63.6574 126.502 66.4507 123.842 68.8979C120.215 72.2349 114.388 78.4799 108.924 76.3537C103.794 74.3574 97.3116 67.4492 93.1006 63.6359L68.7743 41.6132C66.0793 39.2044 63.6376 36.4649 60.6528 34.5247C58.7481 33.2867 55.3053 33.7857 54.7713 36.0652C53.6751 40.7452 54.0981 46.8452 54.1006 51.6514L54.1148 73.9654C54.1166 86.6217 53.7061 101.874 54.2021 114.321C54.3863 120.469 54.9986 126.596 56.0348 132.659C58.2168 145.055 62.2786 157.046 68.0803 168.216C83.4483 197.853 109.948 220.182 141.763 230.301C155.975 234.741 165.588 235.696 180.186 235.816C185.684 235.993 192.616 235.291 198.091 234.396C222.031 230.428 244.246 219.418 261.901 202.77C287.441 179.234 302.411 146.392 303.421 111.675C303.866 97.0524 303.541 81.1392 303.546 66.4097L303.571 48.7737C303.576 46.1309 304.134 36.9552 302.271 34.8584C300.681 33.0697 296.844 33.8327 295.489 35.5284C291.921 38.7872 288.414 41.9847 284.861 45.2024L262.324 65.6109C259.624 68.0624 256.881 70.6172 254.146 73.0297C246.051 80.1714 241.236 75.7262 234.744 69.7862L226.149 61.9522L193.166 32.0699C189.364 28.5829 184.844 24.1187 180.679 21.0777C180.114 20.6659 178.349 20.6704 177.591 20.7132ZM25.9601 297.986C30.0911 302.668 33.6763 307.103 38.1528 311.723C53.7746 327.846 72.3621 343.686 93.2488 352.456C97.7578 354.348 104.577 355.986 109.416 356.841C131.864 359.966 144.592 357.528 166.126 352.738C164.873 349.773 163.842 346.753 162.61 343.776C153.025 320.621 137.375 296.976 113.604 286.668C105.085 282.976 93.3566 282.303 84.1341 282.761C70.7186 283.848 57.4903 286.596 44.7526 290.946C41.0971 292.198 37.4113 293.533 33.7913 294.886C31.1738 295.866 28.6133 297.078 25.9601 297.986ZM191.574 427.868C215.914 433.446 230.264 435.483 254.989 430.576C259.756 429.228 264.929 427.648 269.399 425.391C290.254 414.868 308.756 398.788 324.369 381.543C326.729 378.938 329.609 375.721 331.661 373.013C327.119 371.503 322.119 369.266 317.399 367.606C301.099 361.873 283.116 357.298 265.721 357.776C255.864 358.126 246.541 359.816 237.906 364.793C213.941 378.603 200.989 402.948 191.574 427.868Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="info-card-title">Без цветя</div>
+          <p>
+            Молим ви да <strong>не носите цветя</strong> - не искаме да ви натоварваме с този ангажимент. Бъдете с нас и се забавлявайте.
+          </p>
+        </div>
+
+        <!-- Card 2: Dress code -->
+        <div class="info-card" data-reveal data-delay="7">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>
+            </svg>
+          </div>
+          <div class="info-card-title">Дрес код</div>
+          <p>
+            <strong>Няма дрес код</strong> - носете каквото ви кара да се чувствате красиви. Ще сме до морето цяла вечер, така че имайте предвид морския бриз.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔═══════════════════════════════════╗
+       ║            4. RSVP               ║
+       ╚═══════════════════════════════════╝ -->
+  <section id="rsvp">
+    <div class="rsvp-gradient"></div>
+    <div class="grain-overlay"></div>
+
+    <div class="relative z-10" style="padding:96px 24px;">
+      <div style="max-width:800px;margin:0 auto;">
+
+        <div class="text-center mb-12" data-reveal>
+          <p class="section-eyebrow" style="color:var(--color-accent);">Очакваме ви</p>
+          <h2 class="font-display" style="
+            font-size:clamp(2rem,5vw,3rem);
+            font-weight:600;
+            letter-spacing:-.02em;
+            color:#fff;
+            line-height:1.15;
+            margin-bottom:16px;">
+            Потвърдете присъствието си
+          </h2>
+          <p style="font-size:1rem;color:var(--color-sea-200);opacity:.75;letter-spacing:.04em;">
+            Моля, отговорете до <strong style="color:var(--color-sand-400);">01.07.2026г.</strong>
+          </p>
+        </div>
+
+        <div data-reveal data-delay="1" style="text-align:center;margin-top:8px;">
+          <button data-tf-popup="OacTCk7y" data-tf-medium="snippet" class="btn-primary" style="font-size:1rem;padding:16px 40px;">
+            Потвърди присъствие
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ╔═══════════════════════════════════╗
+       ║         5. FOOTER                ║
+       ╚═══════════════════════════════════╝ -->
+  <footer>
+    <div class="footer-ornament">⚓</div>
+    <p class="font-display" style="
+      font-size:1.35rem;
+      font-style:italic;
+      font-weight:300;
+      color:var(--color-sand-400);
+      margin-bottom:8px;">
+      Жаклин &amp; Стефан
+    </p>
+    <p style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--color-sea-200);opacity:.5;margin-bottom:4px;">
+      04.09.2026
+    </p>
+    <p style="font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--color-sea-200);opacity:.35;">
+      Созопол
+    </p>
+  </footer>
+
+
+  <!-- ╔═══════════════════════════════════╗
+       ║          JAVASCRIPT              ║
+       ╚═══════════════════════════════════╝ -->
+  <script>
+    /* ── Scroll to top on refresh ────────────────────────────── */
+    if (history.scrollRestoration) history.scrollRestoration = 'auto';
+
+    /* ── Countdown ───────────────────────────────────────────── */
+    const TARGET = new Date('2026-09-04T17:30:00+03:00');
+
+    const cdDays  = document.getElementById('cd-days');
+    const cdHours = document.getElementById('cd-hours');
+    const cdMins  = document.getElementById('cd-mins');
+    const cdSecs  = document.getElementById('cd-secs');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function flipDigit(el, newVal) {
+      if (el.textContent === newVal) return;
+      el.classList.add('flip-exit');
+      setTimeout(() => {
+        el.textContent = newVal;
+        el.classList.remove('flip-exit');
+        el.classList.add('flip-enter');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.classList.remove('flip-enter');
+          });
+        });
+      }, 180);
+    }
+
+    function updateCountdown() {
+      const now  = new Date();
+      const diff = TARGET - now;
+
+      if (diff <= 0) {
+        [cdDays, cdHours, cdMins, cdSecs].forEach(el => el.textContent = '00');
+        return;
+      }
+
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+
+      flipDigit(cdDays,  String(days));
+      flipDigit(cdHours, pad(hours));
+      flipDigit(cdMins,  pad(mins));
+      flipDigit(cdSecs,  pad(secs));
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    /* ── Preview mode: skip all animations ─────────────────── */
+    const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
+    if (IS_PREVIEW) {
+      document.body.classList.add('preview-mode');
+    }
+
+    /* ── Hero entrance animations ───────────────────────────── */
+    if (!IS_PREVIEW) {
+      document.body.classList.add('animate-hero');
+      window.addEventListener('load', () => {
+        document.querySelectorAll('.hero-el').forEach(el => {
+          const delay = parseInt(el.style.animationDelay) || 0;
+          setTimeout(() => el.classList.add('visible'), delay);
+        });
+      });
+    }
+
+    /* ── Nav scroll effect + active section ─────────────────── */
+    const nav = document.getElementById('site-nav');
+    const navLinks = nav.querySelectorAll('a.nav-link[href^="#"]');
+    const sections = ['program', 'info', 'rsvp'].map(id => document.getElementById(id));
+
+    function updateActiveNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      const mid = window.scrollY + window.innerHeight / 3;
+      let active = null;
+      sections.forEach(sec => {
+        if (sec && sec.offsetTop <= mid) active = sec.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('nav-link-active', a.getAttribute('href') === '#' + active);
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    /* ── Scroll reveal (IntersectionObserver) ───────────────── */
+    if (!IS_PREVIEW) {
+      document.body.classList.add('reveal-ready');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+    }
+
+    /* ── Menu pill toggle ───────────────────────────────────── */
+  </script>
+  <script src="//embed.typeform.com/next/embed.js"></script>
+</body>
+</html>
